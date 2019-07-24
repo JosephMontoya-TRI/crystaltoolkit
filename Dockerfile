@@ -9,16 +9,21 @@ RUN pip install --no-cache-dir numpy scipy
 ADD requirements.txt /home/project/dash_app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install special pymatgen
+RUN pip install git+https://github.com/montoyjh/pymatgen.git@fast_pourbaix
+
+
 # Dash callbacks are blocking, and also often network-limited
 # rather than CPU-limited, so using NUM_WORKERS >> number of
 # CPU cores is sensible
-ENV CRYSTAL_TOOLKIT_NUM_WORKERS=16
+ENV CRYSTAL_TOOLKIT_NUM_WORKERS=4
 
 # for Crossref API, used for DOI lookups
-ENV CROSSREF_MAILTO=YOUR_EMAIL_HERE
+ENV CROSSREF_MAILTO=joseph.montoya@tri.global
 
+# Run with setup in docker run
 # this can be obtained from materialsproject.org
-ENV PMG_MAPI_KEY=YOUR_MP_API_KEY_HERE
+# ENV PMG_MAPI_KEY=None
 
 # whether to run the server in debug mode or not
 ENV CRYSTAL_TOOLKIT_DEBUG_MODE=False
