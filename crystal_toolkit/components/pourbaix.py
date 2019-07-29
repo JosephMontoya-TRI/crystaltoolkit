@@ -237,7 +237,8 @@ class PourbaixDiagramComponent(MPComponent):
                 layout.update({"annotations": annotations})
             else:
                 x, y = zip(*xydata)
-                data.append(go.Scatter(x=x, y=y, text=labels, hoverinfo='text', mode='markers'))
+                data.append(go.Scatter(x=x, y=y, text=labels,
+                                       hoverinfo='text', mode='markers'))
 
         figure = go.Figure(data=data, layout=layout)
 
@@ -262,7 +263,7 @@ class PourbaixDiagramComponent(MPComponent):
                     options=[
                         {"label": "Filter solids ", "value": "filter_solids"}
                              ],
-                    value = ["filter_solids", "show_labels"],
+                    value = ["filter_solids"],
                     id=self.id("pourbaix_diagram_options"),
                     style={"display": "inline-block"}
                 ),

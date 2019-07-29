@@ -61,7 +61,7 @@ if not MP_EMBED_MODE:
 else:
     # reduce zoom level and box size due to iframe on materialsproject.org
     ctc.StructureMoleculeComponent.default_scene_settings["defaultZoom"] = 0.5
-    box_size = "50vmin"
+    box_size = "30vmin"
 
 
 crystal_toolkit_app.server.secret_key = str(uuid4())
